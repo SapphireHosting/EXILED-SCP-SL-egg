@@ -18,7 +18,7 @@ $(tput setaf 0)
 "
 
 echo "
-$(tput setaf 2)This installer was created by $(tput setaf 1)Parkeymon#0001
+$(tput setaf 2)This installer was created by $(tput setaf 1)Parkeymon#0001, forked by AtomSnoe#0001
 "
 
 # Egg version checking, do not touch!
@@ -35,10 +35,10 @@ else
     Current Version: $(tput setaf 1)${currentVersion}
     Latest: $(tput setaf 2)${latestVersion}
 
-  $(tput setaf 3)Please update to the latest version found here: https://github.com/Parkeymon/EXILED-SCP-SL-egg/releases/latest
+  $(tput setaf 3)Please update to the latest version found here: https://github.com/AtomSnow/EXILED-SCP-SL-egg/releases/latest
 
   "
-  sleep 10
+  sleep 5
 fi
 
 # Download SteamCMD and Install
@@ -61,7 +61,9 @@ export HOME=/mnt/server
 
 if [ "${BETA_TAG}" == "none" ]; then
   ./steamcmd.sh +login anonymous +force_install_dir /mnt/server +app_update "${SRCDS_APPID}" validate +quit
-else
+fi
+
+if [ "${BETA_TAG}" == "publicbeta" ]; then
   ./steamcmd.sh +login anonymous +force_install_dir /mnt/server +app_update "${SRCDS_APPID}" -beta "${BETA_TAG}" validate +quit
 fi
 
